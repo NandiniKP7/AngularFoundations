@@ -1,35 +1,25 @@
-import { Component } from '@angular/core';
-import {IProduct} from '../product.model'
+import { Component, input, signal } from '@angular/core';
+import { IProduct } from '../product.model';
+import { CurrencyPipe, NgClass } from '@angular/common';
 
 @Component({
   selector: 'store-product-details',
-  imports: [],
+  imports: [CurrencyPipe, NgClass],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css',
 })
 export class ProductDetailsComponent {
-  product:IProduct;
-  availableInventory=5;
-  constructor(){
-    this.product={
-      id: 9,
-      name: "Rice",
-      description:'Everyday rice suitable for curries, dal, pulao, and other Indian meals.',
-      imageName: "BasmatiRice.png",
-      category: "Grains",
-      price: 12.99,
-      discount: 0,
-    }
-  }
-  getImageUrl(product:IProduct){
-    return "/assets/"+product.imageName
+  product = input.required<IProduct>();
+  availableInventory = signal(5);
 
+  getImageUrl(product: IProduct) {
+    return '/assets/' + product.imageName;
   }
-  addToCart(product:IProduct, event:MouseEvent)
-  {
-    setTimeout(()=>this.availableInventory=2, 3000);
-    product.name+='addedtoCart'
-    console.log(event)
+  addToCart(event: MouseEvent) {
+    setTimeout(() => this.availableInventory.update((p) => p - 1), 100);
+    console.log(event);
   }
-
+  getPricesClasses() {
+    return {strikethrough:this.product().discount>0}
+  }
 }

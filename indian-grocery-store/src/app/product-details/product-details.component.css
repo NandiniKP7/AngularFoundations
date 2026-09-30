@@ -1,8 +1,23 @@
-.product {
-  display: flex;
-  justify-content: space-between;
+:host {
+  display: grid;
+
+  /* image | product information | price */
+  grid-template-columns: 180px 1fr 180px;
+
+  align-items: center;
+  gap: 30px;
+
   padding: 20px 25px;
   border-bottom: 2px solid #999;
+}
+
+:host img {
+  width: 125px;
+  height: 150px;
+
+  object-fit: contain;
+
+  justify-self: center;
 }
 
 .details {
@@ -10,36 +25,52 @@
   align-items: center;
 }
 
-.product img {
-  width: 125px;
-  margin-right: 25px;
+.details h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.details p {
+  margin: 10px 0;
 }
 
 .price {
   font-size: 25px;
   border-left: 2px solid #aaa;
-  padding-left: 10px;
+
+  padding-left: 25px;
+
   text-align: center;
-  min-width: 190px;
+
+  min-height: 150px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .price p {
-  margin: 0;
+  margin: 5px 0;
 }
 
 .price button {
   padding: 10px;
-  width: 100px;
-  display: block;
-  margin: 10px auto;
-}
 
-.discount {
-  margin-top: -15px;
-  color: #d25ca1;
+  width: 100px;
+
+  display: block;
+
+  margin: 10px auto;
 }
 
 .strikethrough {
   text-decoration: line-through;
   font-size: 18px;
+}
+.discount {
+  margin: 5px 0;
+  color: #d25ca1;
+  font-weight: 600;
+  font-size: 22px;
 }

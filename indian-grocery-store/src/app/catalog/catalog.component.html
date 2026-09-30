@@ -1,5 +1,7 @@
 <ul>
-    <li>
-    <store-product-details></store-product-details>
+    @for(prod of products; track prod.id){
+    <li class="blue-border">
+    <store-product-details [product]="prod"></store-product-details>
     </li>
+}
 </ul>
