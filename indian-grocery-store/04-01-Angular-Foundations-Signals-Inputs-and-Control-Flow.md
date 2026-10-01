@@ -1,5 +1,13 @@
 # Angular Foundations — Signals, Input Properties, and Template Control Flow
 
+## Topics Covered
+
+1. **Handling Asynchronous Changes with Signals**
+2. **Passing Data to Child Components with Input Properties**
+3. **Rendering Lists with @for**
+4. **Conditionally Rendering Content with @if / @else**
+5. **Using CurrencyPipe**
+
 This section builds directly on the previous data-binding lesson.
 
 We already saw that a normal property changed inside `setTimeout()` did not automatically refresh the UI in the course's zoneless Angular setup.
@@ -642,83 +650,49 @@ ProductDetailsComponent
 
 ---
 
-## Quick Review
+## Signals & Control Flow Cheat Sheet
 
-```text
-signal(5)
-→ create reactive state
+```ts
+availableInventory = signal(5);
 ```
 
 ```text
-availableInventory()
-→ read a signal
+availableInventory() → read
+set(value)            → replace value
+update(previous => …) → calculate from previous value
+```
+
+```ts
+product = input.required<IProduct>();
+```
+
+```html
+<store-product-details [product]="prod"></store-product-details>
 ```
 
 ```text
-signal.set(value)
-→ replace signal value
-```
+input.required<T>()
+→ child requires data from parent
 
-```text
-signal.update(previous => ...)
-→ calculate new value from previous value
-```
-
-```text
-input.required<IProduct>()
-→ child requires product data from parent
-```
-
-```text
-[product]="prod"
-→ parent passes data to child
-```
-
-```text
 product()
 → read the input signal
 ```
 
-```text
-@for (...; track ...)
-→ render a list
+```html
+@for (prod of products; track prod.id) {
+  ...
+}
+
+@if (product().discount > 0) {
+  ...
+} @else {
+  ...
+}
 ```
 
 ```text
-@if / @else
-→ conditionally render content
+@for        → render a collection
+track       → identify each item
+@if / @else → conditional rendering
+CurrencyPipe → format currency values
 ```
-
----
-
-## Main Idea
-
-This section turns our product components into a much more realistic Angular structure.
-
-```text
-Signals
-→ make changing state reactive
-
-Inputs
-→ make child components reusable
-
-@for
-→ renders collections
-
-@if / @else
-→ controls what appears
-```
-
-The biggest architectural improvement is:
-
-```text
-Catalog owns the product collection
-        ↓
-Catalog decides which products to render
-        ↓
-ProductDetails receives one product
-        ↓
-ProductDetails focuses only on displaying that product
-```
-
-That separation is what makes the child component reusable.

@@ -1,5 +1,12 @@
 # Angular Foundations — Component Styling
 
+## Topics Covered
+
+1. **Angular CSS: Global Styles Versus Component Styles**
+2. **Conditionally Applying CSS Classes with Class Bindings**
+3. **Applying CSS Classes with the ngClass Directive**
+4. **Styling a Component's Host Element**
+
 Angular gives us two main ways to style an application:
 
 ```text
@@ -645,56 +652,42 @@ style the component element itself
 
 ---
 
-## Quick Review
+## Component Styling Cheat Sheet
 
 ```text
 src/styles.css
 → global styles
-```
 
-```text
 component.css
 → styles scoped to that component
 ```
 
-```text
-[class.strikethrough]="condition"
-→ conditionally apply one class
+```html
+<p [class.strikethrough]="product().discount > 0">
 ```
 
 ```text
-[ngClass]="..."
-→ dynamically apply one or more classes
+[class.className]
+→ apply one CSS class conditionally
+```
+
+```html
+<p [ngClass]="getPriceClasses()">
+```
+
+```text
+ngClass
+→ useful when applying multiple/dynamic classes
+→ import NgClass in a standalone component
+```
+
+```css
+:host {
+  display: grid;
+}
 ```
 
 ```text
 :host
-→ style the component's host element
+→ styles the component's own host element
 ```
-
-```text
-:host img
-→ style images inside the host component
-```
-
----
-
-## Main Idea
-
-Angular styling gives us control over **where styles apply** and **when styles apply**.
-
-```text
-Global CSS
-→ shared application styling
-
-Component CSS
-→ isolated component styling
-
-Class binding / ngClass
-→ conditional styling
-
-:host
-→ style the component itself
-```
-
-This makes Angular components easier to maintain because each component can own its own styles without unintentionally affecting unrelated parts of the application.

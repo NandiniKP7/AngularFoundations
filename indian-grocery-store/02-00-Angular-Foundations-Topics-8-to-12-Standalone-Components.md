@@ -1,5 +1,13 @@
 # Topics 8–12 — Standalone Components: Prefixes, Images, Reuse, Lifecycle & Inline Templates
 
+## Topics Covered
+
+1. **Custom Component Selector Prefix**
+2. **Displaying Images from public/**
+3. **Creating Reusable Child Components**
+4. **Component Lifecycle Hooks**
+5. **Inline Templates and Styles**
+
 This section continues what we learned about Angular components.
 
 We already know:
@@ -23,7 +31,7 @@ Now we add five practical ideas:
 
 ---
 
-# 1. Custom Component Selector Prefix
+## 1. Custom Component Selector Prefix
 
 Angular-generated components use a selector such as:
 
@@ -59,7 +67,7 @@ and we use it like:
 <store-catalog></store-catalog>
 ```
 
-## Why use a custom prefix?
+### Why use a custom prefix?
 
 A unique prefix helps:
 
@@ -78,7 +86,7 @@ store-cart
 
 It is immediately clear that these belong to the Indian Grocery Store application.
 
-## Configure the Prefix for Future Components
+### Configure the Prefix for Future Components
 
 Inside `angular.json`:
 
@@ -116,7 +124,7 @@ could generate:
 selector: 'store-product-details'
 ```
 
-## Memory Rule
+### Memory Rule
 
 ```text
 angular.json prefix
@@ -126,7 +134,7 @@ future component selectors
 
 ---
 
-# 2. Displaying Images from `public/`
+## 2. Displaying Images from `public/`
 
 Angular uses the `public` folder for static files such as:
 
@@ -162,7 +170,7 @@ and not a local computer path such as:
 /Users/.../public/assets/BasmatiRice.png
 ```
 
-## Why?
+### Why?
 
 Angular serves the contents of `public/` from the application root.
 
@@ -182,13 +190,13 @@ That is why your image works with:
 <img src="/assets/BasmatiRice.png">
 ```
 
-## Memory Rule
+### Memory Rule
 
 > `public/` exists in the project, but it disappears from the browser URL.
 
 ---
 
-# 3. Creating Reusable Child Components
+## 3. Creating Reusable Child Components
 
 Our Catalog component originally contained all the HTML for one product.
 
@@ -213,7 +221,7 @@ Catalog
 Reusable ProductDetails component
 ```
 
-## Create the Child Component
+### Create the Child Component
 
 ```bash
 ng g c product-details --type=component
@@ -235,7 +243,7 @@ Its selector might be:
 selector: 'store-product-details'
 ```
 
-## Move Product Responsibility into the Child
+### Move Product Responsibility into the Child
 
 The Product Details component should be responsible for displaying **one product**.
 
@@ -278,7 +286,7 @@ product-details.component.css
 
 because Angular component styles are scoped to the component.
 
-# Parent Uses the Reusable Child
+## Parent Uses the Reusable Child
 
 The Catalog template can now use:
 
@@ -316,7 +324,7 @@ App
     └── ProductDetails
 ```
 
-# Why Keep `<li>` in the Parent?
+## Why Keep `<li>` in the Parent?
 
 The course intentionally keeps:
 
@@ -348,14 +356,14 @@ ProductDetails only displays product UI
 
 This gives the child component one focused responsibility.
 
-## Memory Rule
+### Memory Rule
 
 > Parent controls where the child is placed.  
 > Child controls its own reusable UI.
 
 ---
 
-# 4. Component Lifecycle Hooks
+## 4. Component Lifecycle Hooks
 
 Every Angular component has a **lifecycle**.
 
@@ -383,7 +391,7 @@ ngOnChanges()
 ngOnDestroy()
 ```
 
-## `ngOnInit()`
+### `ngOnInit()`
 
 Runs once when the component is initialized.
 
@@ -435,7 +443,7 @@ The method begins with:
 ng
 ```
 
-## `ngOnChanges()`
+### `ngOnChanges()`
 
 Runs when Angular-bound input values change.
 
@@ -451,7 +459,7 @@ ngOnChanges()
 
 This becomes more useful after we learn component inputs.
 
-## `ngOnDestroy()`
+### `ngOnDestroy()`
 
 Runs shortly before Angular destroys/removes the component.
 
@@ -463,7 +471,7 @@ cleanup
 
 For example, cleanup may be needed for resources or subscriptions.
 
-# Other Lifecycle Hooks
+## Other Lifecycle Hooks
 
 Angular has additional lifecycle hooks, including:
 
@@ -489,7 +497,7 @@ And among those:
 
 > `ngOnInit()` is the one you will see most often at this stage.
 
-# Lifecycle Mental Model
+## Lifecycle Mental Model
 
 ```text
 CREATE
@@ -509,7 +517,7 @@ REMOVE
 
 ---
 
-# 5. Inline Templates and Styles
+## 5. Inline Templates and Styles
 
 So far our component uses separate files:
 
@@ -530,7 +538,7 @@ and connects them using:
 
 Angular also allows us to put the HTML and CSS directly inside the component metadata.
 
-# Inline Template
+## Inline Template
 
 Instead of:
 
@@ -558,7 +566,7 @@ The backticks:
 
 allow a multiline string.
 
-# Inline Styles
+## Inline Styles
 
 Instead of:
 
@@ -603,7 +611,7 @@ So a small component could look like:
 export class CatalogComponent {}
 ```
 
-# Inline vs Separate Files
+## Inline vs Separate Files
 
 Both approaches are valid.
 
@@ -631,7 +639,7 @@ That is why the course returns to separate files for the Catalog component.
 
 ---
 
-# How Everything Connects
+## How Everything Connects
 
 At this point our application architecture looks more like:
 
@@ -675,87 +683,41 @@ template / styles
 
 ---
 
-# Quick Revision
+## Standalone Components Cheat Sheet
 
 ```text
-CUSTOM PREFIX
-
 angular.json
 "prefix": "store"
-
-→ store-catalog
-→ store-product-details
+→ future selectors use store-
 ```
 
 ```text
-PUBLIC IMAGES
-
+Physical image:
 public/assets/BasmatiRice.png
 
-Template:
-<img src="/assets/BasmatiRice.png">
+Template path:
+/assets/BasmatiRice.png
 ```
 
 ```text
-REUSABLE CHILD
+Parent
+→ imports child
+→ controls where child is placed
 
-Catalog
-   ↓
-ProductDetails
-
-Parent imports child
-Parent uses child's selector
+Child
+→ owns its reusable UI
 ```
 
 ```text
-LIFECYCLE
-
-ngOnInit()
-→ initialize
-
-ngOnChanges()
-→ input changes
-
-ngOnDestroy()
-→ cleanup
+ngOnInit()    → initialize
+ngOnChanges() → react to input changes
+ngOnDestroy() → cleanup
 ```
 
 ```text
-INLINE
-
 templateUrl → external HTML
 template    → inline HTML
 
 styleUrl → external CSS
 styles   → inline CSS
 ```
-
-# Main Takeaway
-
-This section is really about making Angular components **organized and reusable**.
-
-```text
-Unique selector names
-        +
-Correct asset handling
-        +
-Small reusable child components
-        +
-Lifecycle hooks
-        +
-Flexible template/style organization
-        ↓
-Cleaner Angular components
-```
-
-For the Indian Grocery Store, the most important architectural improvement is:
-
-```text
-App
- ↓
-Catalog
- ↓
-Reusable ProductDetails
-```
-
-Instead of duplicating product HTML, we now have one focused child component that can eventually receive different product data and render many grocery products.

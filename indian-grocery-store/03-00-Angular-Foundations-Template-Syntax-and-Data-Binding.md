@@ -1,5 +1,15 @@
 # Angular Foundations — Template Syntax and Data Binding
 
+## Topics Covered
+
+1. **Using Interpolation to Render Expressions**
+2. **Binding to Component Data with Interpolation**
+3. **Using Property Bindings**
+4. **Calling Functions from a Component Template**
+5. **Responding to User Events**
+6. **Data Bindings and Angular Change Detection**
+7. **Demonstrating Asynchronous Changes**
+
 Until now, our Angular templates mostly contained regular HTML.
 
 This section introduces how Angular connects the **component class** to the **template** so the UI can display data, react to user actions, and stay synchronized when data changes.
@@ -647,61 +657,45 @@ export class ProductDetailsComponent {
 
 ---
 
-## Quick Review
+## Data Binding Cheat Sheet
+
+```html
+{{ product.name }}
+```
 
 ```text
 Interpolation
-{{ product.name }}
-→ display component data
+→ Component data → template text
+```
+
+```html
+<img [src]="getImageUrl(product)">
 ```
 
 ```text
 Property binding
-[src]="getImageUrl(product)"
-→ Component → Template
+→ Component value → element/property
+```
+
+```html
+<button (click)="addToCart(product, $event)">Buy</button>
 ```
 
 ```text
 Event binding
-(click)="addToCart(...)"
-→ Template → Component
-```
+→ User event → component method
 
-```text
 $event
-→ information about the browser event
+→ event object supplied by Angular
 ```
 
 ```text
-Change detection
-→ Angular notices changes
-→ UI stays synchronized
+{{ getSomething() }}
+→ template can call a component method
+
+Zoneless async change to a normal property
+→ may not notify Angular
+
+Signal
+→ reactive state used in the next lesson
 ```
-
-```text
-Async plain-property change
-→ Angular may not be notified in zoneless mode
-→ Signals are the next solution
-```
-
----
-
-## Main Idea
-
-Angular templates are more than HTML.
-
-They are connected to the component through bindings:
-
-```text
-               COMPONENT
-              ↙         ↘
-          data           methods
-           ↓               ↑
-       {{ }} / [ ]         ( )
-           ↓               ↑
-              TEMPLATE
-                 ↑
-                USER
-```
-
-Interpolation displays component data, property binding sets element properties, event binding sends user actions back to the component, and change detection keeps the UI synchronized with changing application state.

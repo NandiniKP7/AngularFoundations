@@ -1,5 +1,12 @@
 # Angular Foundations — Topics 1 to 4
 
+## Topics Covered
+
+1. **What Is Angular? An Architectural Overview**
+2. **Setting Up Your Angular Development Environment**
+3. **Creating and Exploring Our First Angular App**
+4. **Cloning Our Demo App**
+
 These notes cover the first four topics from the Angular Foundations course.
 
 The goal is to keep the notes:
@@ -12,13 +19,13 @@ The goal is to keep the notes:
 
 ---
 
-# Topic 1 — What Is Angular? An Architectural Overview
+## Topic 1 — What Is Angular? An Architectural Overview
 
 Angular is a **component-based framework** for building web applications.
 
 Instead of building an application as one huge page, Angular breaks it into smaller, reusable pieces.
 
-## Angular Architecture
+### Angular Architecture
 
 ```text
 Angular Application
@@ -41,7 +48,7 @@ Angular Application
     → keeps UI synchronized with changing data
 ```
 
-## Components
+### Components
 
 A **component controls one section of the user interface**.
 
@@ -76,7 +83,7 @@ Template updates
 User sees the new UI
 ```
 
-## Templates
+### Templates
 
 Angular templates look like normal HTML, but Angular adds special syntax.
 
@@ -110,7 +117,7 @@ You will later see syntax like:
 
 You do not need to memorize these yet.
 
-## Standalone Components
+### Standalone Components
 
 Modern Angular applications use **standalone components**.
 
@@ -131,7 +138,7 @@ declares what it needs
 
 The actual syntax comes later.
 
-## Services
+### Services
 
 A **service** is usually a TypeScript class that contains reusable logic.
 
@@ -162,7 +169,7 @@ Product Service
 API / Data
 ```
 
-## Dependency Injection
+### Dependency Injection
 
 Angular can provide a component or service with the dependencies it needs.
 
@@ -178,7 +185,7 @@ Memory rule:
 
 > A class says what it needs; Angular supplies it.
 
-## Router
+### Router
 
 The Angular Router connects URLs to application views.
 
@@ -194,7 +201,7 @@ Product Component
 
 The router manages navigation between pages or views.
 
-## Change Detection and Signals
+### Change Detection and Signals
 
 Angular keeps the UI synchronized with application data.
 
@@ -212,23 +219,7 @@ For now, just remember:
 
 > A signal represents reactive data that Angular can track.
 
-## Quick Memory
-
-```text
-Component = UI building block
-Service   = reusable logic
-DI        = supplies dependencies
-Router    = navigation
-Signals   = reactive state
-```
-
-### Main Takeaway
-
-> Angular applications are built from components, while services, dependency injection, routing, and reactivity help those components work together.
-
----
-
-# Topic 2 — Setting Up Your Angular Development Environment
+## Topic 2 — Setting Up Your Angular Development Environment
 
 Before building an Angular application, you need a few development tools.
 
@@ -242,7 +233,7 @@ VS Code
 Angular Language Service
 ```
 
-## 1. Node.js
+### 1. Node.js
 
 Angular uses **Node.js** during development.
 
@@ -257,7 +248,7 @@ For Angular development, Node is used for things such as:
 
 Installing Node also installs **npm**.
 
-## 2. npm
+### 2. npm
 
 `npm` stands for Node Package Manager.
 
@@ -271,7 +262,7 @@ npm install
 
 Angular projects use npm to install project dependencies.
 
-## 3. Angular CLI
+### 3. Angular CLI
 
 The **Angular CLI** is Angular's command-line tool.
 
@@ -281,7 +272,7 @@ Install it globally with:
 npm install -g @angular/cli
 ```
 
-### What does `-g` mean?
+#### What does `-g` mean?
 
 ```text
 -g
@@ -299,7 +290,7 @@ Run application
 Build application
 ```
 
-## 4. Visual Studio Code
+### 4. Visual Studio Code
 
 VS Code is the editor used in the course.
 
@@ -312,7 +303,7 @@ It provides useful Angular editor support such as:
 - Angular template support
 - error detection
 
-## Setup Flow
+### Setup Flow
 
 ```text
 Install Node.js
@@ -328,7 +319,7 @@ Install Angular Language Service
 Ready for Angular development
 ```
 
-## Useful Checks
+### Useful Checks
 
 You can check your installed tools with:
 
@@ -338,23 +329,7 @@ npm --version
 ng version
 ```
 
-## Quick Memory
-
-```text
-Node.js → runtime for development tools
-npm     → installs packages
-CLI     → creates and manages Angular projects
-VS Code → code editor
-Angular Language Service → Angular editor assistance
-```
-
-### Main Takeaway
-
-> Node provides the development environment, npm installs packages, and the Angular CLI is the main command-line tool used to create and work with Angular applications.
-
----
-
-# Topic 3 — Creating and Exploring Our First Angular App
+## Topic 3 — Creating and Exploring Our First Angular App
 
 This topic is about understanding **how an Angular application starts and how the first UI appears in the browser**.
 
@@ -374,7 +349,7 @@ app.html
 Browser shows the UI
 ```
 
-## 1. Create the Angular Project
+### 1. Create the Angular Project
 
 Create your project with the Angular CLI:
 
@@ -406,7 +381,7 @@ Open it in VS Code:
 code .
 ```
 
-## 2. Run the App
+### 2. Run the App
 
 Start the Angular application:
 
@@ -430,7 +405,7 @@ Angular rebuilds
 Browser updates
 ```
 
-## Important Project Files
+### Important Project Files
 
 ```text
 indian-grocery-store/
@@ -448,7 +423,7 @@ indian-grocery-store/
         └── app.config.ts
 ```
 
-## `index.html` — Where Angular Appears
+### `index.html` — Where Angular Appears
 
 Your `index.html` contains:
 
@@ -472,7 +447,7 @@ index.html
 Put the Angular App component here
 ```
 
-## `app.ts` — Defines the Root Component
+### `app.ts` — Defines the Root Component
 
 Your root component contains:
 
@@ -512,7 +487,7 @@ selector: 'app-root'
 App component
 ```
 
-## `app.html` — The Component UI
+### `app.html` — The Component UI
 
 The root component points to:
 
@@ -550,7 +525,7 @@ The browser displays:
 Indian Grocery Store
 ```
 
-## `app.css` — Component Styles
+### `app.css` — Component Styles
 
 Your component also points to:
 
@@ -567,7 +542,7 @@ App component
 └── app.css  → styles for this component
 ```
 
-## `main.ts` — Starts Angular
+### `main.ts` — Starts Angular
 
 Your `main.ts` contains:
 
@@ -590,7 +565,7 @@ Angular starts
 App component loads
 ```
 
-## `app.config.ts` — Application Configuration
+### `app.config.ts` — Application Configuration
 
 This file contains application-wide Angular configuration.
 
@@ -605,7 +580,7 @@ app.config.ts
 
 You will learn the details later.
 
-## `styles.css` — Global Styles
+### `styles.css` — Global Styles
 
 `styles.css` contains styles that can apply across the entire application.
 
@@ -617,7 +592,7 @@ app.css
 → styles for the App component
 ```
 
-## The Most Important Connection
+### The Most Important Connection
 
 ```text
 main.ts
@@ -635,7 +610,7 @@ app.html
 Indian Grocery Store UI appears
 ```
 
-## Don't Worry About These Yet
+### Don't Worry About These Yet
 
 Your code also contains things such as:
 
@@ -651,47 +626,7 @@ These are future Angular topics.
 
 For Topic 3, simply recognize that they exist.
 
-## Quick Memory
-
-```text
-ng new indian-grocery-store
-→ create Angular project
-
-npm start
-→ run Angular project
-
-main.ts
-→ starts Angular
-
-index.html
-→ contains <app-root>
-
-app.ts
-→ defines App component
-
-selector: 'app-root'
-→ connects App to <app-root>
-
-app.html
-→ component UI
-
-app.css
-→ component styles
-
-styles.css
-→ global styles
-
-app.config.ts
-→ application-wide configuration
-```
-
-### Main Takeaway
-
-> Angular starts from `main.ts`, loads the `App` component, matches its `app-root` selector with `<app-root>` in `index.html`, and renders the component's `app.html` content in the browser.
-
----
-
-# Topic 4 — Cloning Our Demo App
+## Topic 4 — Cloning Our Demo App
 
 Instead of continuing with only the basic app created by the Angular CLI, the course uses a prepared GitHub repository.
 
@@ -699,7 +634,7 @@ The repository contains the Angular project plus additional files that will be u
 
 For your project, the same idea applies to **`indian-grocery-store`**.
 
-## Clone the Project
+### Clone the Project
 
 A typical Git flow is:
 
@@ -713,7 +648,7 @@ Then move into the project:
 cd indian-grocery-store
 ```
 
-## Install Project Dependencies
+### Install Project Dependencies
 
 After cloning a project, run:
 
@@ -741,7 +676,7 @@ So one of the first things you usually do after cloning an Angular project is:
 npm install
 ```
 
-## Open the Project
+### Open the Project
 
 Open the current folder in VS Code:
 
@@ -749,11 +684,11 @@ Open the current folder in VS Code:
 code .
 ```
 
-## Extra Files Used by the Course
+### Extra Files Used by the Course
 
 The prepared course project contains a few extra resources.
 
-### `styles.css`
+#### `styles.css`
 
 Contains **global CSS styles** used throughout the application.
 
@@ -765,7 +700,7 @@ global application styling
 
 These are regular CSS styles.
 
-### `public/`
+#### `public/`
 
 Contains static files such as images.
 
@@ -787,7 +722,7 @@ public/
 
 These files can later be displayed by Angular components.
 
-### `api-server/`
+#### `api-server/`
 
 The course also includes a small **Express.js API server**.
 
@@ -822,17 +757,17 @@ Poha
 
 The API server will be more important later when Angular HTTP concepts are introduced.
 
-### `course-resources/`
+#### `course-resources/`
 
 This folder contains extra files used later in the course, such as additional CSS.
 
 It is course support material rather than an important Angular concept.
 
-## Cloning vs Creating
+### Cloning vs Creating
 
 There are two common starting situations.
 
-### Create a brand-new Angular project
+#### Create a brand-new Angular project
 
 ```bash
 ng new indian-grocery-store
@@ -840,7 +775,7 @@ ng new indian-grocery-store
 
 Angular CLI creates everything from scratch.
 
-### Download an existing project
+#### Download an existing project
 
 ```bash
 git clone <repository-url>
@@ -849,31 +784,30 @@ npm install
 
 Git downloads the source code, and npm installs the required dependencies.
 
-## Quick Memory
+---
+
+## Cheat Sheet
 
 ```text
-git clone
-→ download project source
-
-cd
-→ move into project folder
-
-npm install
-→ install project dependencies
-
-code .
-→ open project in VS Code
-
-styles.css
-→ global styles
-
-public/
-→ static files/images
-
-api-server/
-→ backend API used later
+Component      → one focused part of the UI
+Service        → reusable logic / shared data
+Dependency Injection → Angular supplies what a class needs
+Router         → navigation between views
+Signal         → reactive state Angular can track
 ```
 
-### Main Takeaway
+```bash
+ng new indian-grocery-store   # create project
+npm start                     # run project
+npm install                   # install dependencies after cloning
+```
 
-> When you clone an existing Angular project, the source code is downloaded from Git, but the npm dependencies still need to be installed locally with `npm install`.
+```text
+main.ts       → starts Angular
+index.html    → contains <app-root>
+app.ts        → defines the root App component
+app.html      → root component UI
+app.css       → App component styles
+styles.css    → global styles
+app.config.ts → application-wide configuration
+```

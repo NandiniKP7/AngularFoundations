@@ -1160,8 +1160,6 @@ src/app/cart/cart.component.html
 
 ---
 
----
-
 ## Routing Cheat Sheet
 
 ```text

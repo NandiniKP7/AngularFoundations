@@ -1,5 +1,13 @@
 # Topic 5 — Introduction to TypeScript
 
+## Topics Covered
+
+1. **Static Typing**
+2. **Interfaces and Optional Properties**
+3. **Class Properties**
+4. **Public and Private**
+5. **Constructor Shorthand**
+
 Angular uses **TypeScript** as its main programming language.
 
 TypeScript is JavaScript with extra features that help catch mistakes while you are writing code.
@@ -17,7 +25,7 @@ TypeScript
 
 ---
 
-# 1. Static Typing
+## 1. Static Typing
 
 JavaScript allows a variable to change to a completely different type.
 
@@ -53,7 +61,7 @@ expects number
 string is not allowed
 ```
 
-## Basic Syntax
+### Basic Syntax
 
 ```text
 variableName: type
@@ -67,7 +75,7 @@ let category: string = "Lentils";
 let inStock: boolean = true;
 ```
 
-### Why this matters
+#### Why this matters
 
 TypeScript can catch many mistakes **before the application runs**.
 
@@ -75,7 +83,7 @@ TypeScript can catch many mistakes **before the application runs**.
 
 ---
 
-# 2. Interfaces — Describe an Object's Shape
+## 2. Interfaces — Describe an Object's Shape
 
 A grocery product has several related values:
 
@@ -111,7 +119,7 @@ TypeScript checks that the object follows the interface.
 
 ---
 
-## What if the type is wrong?
+### What if the type is wrong?
 
 ```ts
 const rajma: Product = {
@@ -133,7 +141,7 @@ received string
 
 ---
 
-## What if a required property is missing?
+### What if a required property is missing?
 
 ```ts
 const rajma: Product = {
@@ -146,7 +154,7 @@ This fails because `category` is required.
 
 ---
 
-# Optional Properties — `?`
+## Optional Properties — `?`
 
 Sometimes a property does not always need to exist.
 
@@ -195,7 +203,7 @@ discount?: number
 
 ---
 
-# 3. Class Properties
+## 3. Class Properties
 
 Angular components and services are TypeScript classes, so class properties are important.
 
@@ -246,7 +254,7 @@ rajma.price → 4.99
 
 ---
 
-# 4. Public and Private
+## 4. Public and Private
 
 Class members can control where they are accessible.
 
@@ -259,7 +267,7 @@ private
 
 ---
 
-## `public`
+### `public`
 
 Class members are **public by default**.
 
@@ -295,7 +303,7 @@ public
 
 ---
 
-## `private`
+### `private`
 
 A private member can only be accessed from inside its class.
 
@@ -335,11 +343,11 @@ outside class ✕
 
 ---
 
-# 5. Constructor Shorthand
+## 5. Constructor Shorthand
 
 This is one of the most useful TypeScript shortcuts in the lesson.
 
-## Longer version
+### Longer version
 
 ```ts
 class Product {
@@ -361,7 +369,7 @@ We:
 
 ---
 
-## TypeScript shorthand
+### TypeScript shorthand
 
 TypeScript lets us shorten all of that to:
 
@@ -404,7 +412,7 @@ constructor(name: string) {
 
 ---
 
-## Important: What Does `private` Mean Here?
+### Important: What Does `private` Mean Here?
 
 This:
 
@@ -424,7 +432,7 @@ const rajma = new Product("Rajma", "Beans");
 
 ---
 
-# Putting the Ideas Together
+## Putting the Ideas Together
 
 ```ts
 interface GroceryItem {
@@ -470,7 +478,7 @@ calculateProfit()
 
 ---
 
-# Why This Matters in Angular
+## Why This Matters in Angular
 
 Angular components and services are TypeScript classes.
 
@@ -500,68 +508,37 @@ private productService
 
 ---
 
-# Quick Memory
+## TypeScript Cheat Sheet
 
-```text
-STATIC TYPE
-
+```ts
 let price: number = 4.99;
-
-→ controls what type of value is allowed
+let name: string = 'Rajma';
+let available: boolean = true;
 ```
 
-```text
-INTERFACE
-
+```ts
 interface Product {
   name: string;
   price: number;
+  discount?: number;
 }
-
-→ describes the shape of an object
 ```
 
 ```text
-OPTIONAL PROPERTY
+property: type   → required property
+property?: type  → optional property
+public           → accessible inside and outside the class
+private          → accessible only inside the class
+```
 
-discount?: number
-
-→ may or may not exist
+```ts
+constructor(
+  public name: string,
+  private costPrice: number
+) {}
 ```
 
 ```text
-CLASS PROPERTY
-
-name: string;
-
-→ data that belongs to a class
+constructor(public/private ...)
+→ creates + receives + initializes the class property
 ```
-
-```text
-PUBLIC
-
-→ accessible inside and outside the class
-→ default for class members
-```
-
-```text
-PRIVATE
-
-→ accessible only inside the class
-```
-
-```text
-CONSTRUCTOR SHORTHAND
-
-constructor(private name: string) {}
-
-→ creates + initializes the property
-```
-
----
-
-## Main Takeaway
-
-> TypeScript adds type safety to JavaScript. Types describe individual values, interfaces describe object shapes, class properties store class data, and `public` / `private` control where class members can be accessed.
-
-These TypeScript patterns will appear repeatedly in Angular components and services.
