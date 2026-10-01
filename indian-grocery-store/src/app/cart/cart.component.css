@@ -1,0 +1,10 @@
+.cart{
+    border-top: 2px solid gray;
+}
+
+.total{
+    margin: 25px 175px 0 0 ;
+    align-self: right;
+    font-size: 25px;
+    text-align:right
+}
