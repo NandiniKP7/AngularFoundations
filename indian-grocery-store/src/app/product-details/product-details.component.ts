@@ -1,6 +1,7 @@
 import { Component, input, signal } from '@angular/core';
 import { IProduct } from '../product.model';
 import { CurrencyPipe, NgClass } from '@angular/common';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'store-product-details',
@@ -11,13 +12,16 @@ import { CurrencyPipe, NgClass } from '@angular/common';
 export class ProductDetailsComponent {
   product = input.required<IProduct>();
   availableInventory = signal(5);
+constructor(private cartService:CartService){
 
+}
   getImageUrl(product: IProduct) {
     return '/assets/' + product.imageName;
   }
   addToCart(event: MouseEvent) {
     setTimeout(() => this.availableInventory.update((p) => p - 1), 100);
-    console.log(event);
+    this.cartService.addItemsTocart(this.product())
+
   }
   getPricesClasses() {
     return {strikethrough:this.product().discount>0}

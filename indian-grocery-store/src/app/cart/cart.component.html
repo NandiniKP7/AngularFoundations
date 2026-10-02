@@ -1,6 +1,6 @@
 <h1 class="header">Your Cart</h1>
 <ul class="cart">
-    @for(prod of cartItems; track prod.id){
+    @for(prod of cartItems(); track prod.id){
     <li>
     <store-cart-items [product]="prod"/>
     </li>

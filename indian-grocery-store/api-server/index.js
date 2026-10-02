@@ -9,107 +9,98 @@ const app = express();
 
 app.get("/api/products", (req, res) => {
   const products = [
-    {
-      id: 1,
-      name: "Rajma",
-      description:
-        "Red kidney beans commonly used to prepare rajma curry and other Indian dishes.",
-      imageName: "rajma.png",
-      category: "Beans",
-      price: 4.99,
-      discount: 0,
-    },
-    {
-      id: 2,
-      name: "Kabuli Chana",
-      description:
-        "White chickpeas commonly used for chole, salads, curries, and snacks.",
-      imageName: "kabuli-chana.png",
-      category: "Beans",
-      price: 4.49,
-      discount: 0.1,
-    },
-    {
-      id: 3,
-      name: "Soya Chunks",
-      description:
-        "Protein-rich soya chunks that can be used in curries, biryani, and stir-fry dishes.",
-      imageName: "soya-chunks.png",
-      category: "Protein",
-      price: 3.99,
-      discount: 0,
-    },
-    {
-      id: 4,
-      name: "Vermicelli",
-      description:
-        "Thin noodles commonly used for upma, semiya, kheer, and other Indian dishes.",
-      imageName: "vermicelli.png",
-      category: "Grains",
-      price: 2.99,
-      discount: 0,
-    },
-    {
-      id: 5,
-      name: "Peanuts",
-      description:
-        "Raw peanuts suitable for snacks, chutneys, curries, and traditional Indian recipes.",
-      imageName: "peanuts.png",
-      category: "Nuts",
-      price: 3.49,
-      discount: 0.1,
-    },
-    {
-      id: 6,
-      name: "Toor Dal",
-      description:
-        "Split pigeon peas commonly used for dal, sambar, and other everyday Indian meals.",
-      imageName: "toor-dal.png",
-      category: "Lentils",
-      price: 5.99,
-      discount: 0,
-    },
-    {
-      id: 7,
-      name: "Chana Dal",
-      description:
-        "Split chickpeas used in dal, curries, snacks, and many traditional Indian recipes.",
-      imageName: "chana-dal.png",
-      category: "Lentils",
-      price: 4.99,
-      discount: 0,
-    },
-    {
-      id: 8,
-      name: "Masoor Dal",
-      description:
-        "Red lentils that cook quickly and are commonly used for simple dal and soups.",
-      imageName: "masoor-dal.png",
-      category: "Lentils",
-      price: 4.49,
-      discount: 0.15,
-    },
-    {
-      id: 9,
-      name: "Rice",
-      description:
-        "Everyday rice suitable for curries, dal, pulao, and other Indian meals.",
-      imageName: "rice.png",
-      category: "Grains",
-      price: 12.99,
-      discount: 0,
-    },
-    {
-      id: 10,
-      name: "Poha",
-      description:
-        "Flattened rice commonly used to prepare poha, snacks, and light breakfast dishes.",
-      imageName: "poha.png",
-      category: "Grains",
-      price: 3.99,
-      discount: 0,
-    },
-  ];
+  {
+    "id": 1,
+    "name": "Rajma",
+    "description": "Red kidney beans commonly used to prepare rajma curry and other Indian dishes.",
+    "imageName": "Rajma.png",
+    "category": "Beans",
+    "price": 4.99,
+    "discount": 0
+  },
+  {
+    "id": 2,
+    "name": "Kabuli Chana",
+    "description": "White chickpeas commonly used for chole, salads, curries, and snacks.",
+    "imageName": "kabulichana.png",
+    "category": "Beans",
+    "price": 4.49,
+    "discount": 0.1
+  },
+  {
+    "id": 3,
+    "name": "Soya Chunks",
+    "description": "Protein-rich soya chunks that can be used in curries, biryani, and stir-fry dishes.",
+    "imageName": "soyachunks.png",
+    "category": "Protein",
+    "price": 3.99,
+    "discount": 0
+  },
+  {
+    "id": 4,
+    "name": "Vermicelli",
+    "description": "Thin noodles commonly used for upma, semiya, kheer, and other Indian dishes.",
+    "imageName": "Veremicli.png",
+    "category": "Grains",
+    "price": 2.99,
+    "discount": 0
+  },
+  {
+    "id": 5,
+    "name": "Peanuts",
+    "description": "Raw peanuts suitable for snacks, chutneys, curries, and traditional Indian recipes.",
+    "imageName": "peanuts.png",
+    "category": "Nuts",
+    "price": 3.49,
+    "discount": 0.1
+  },
+  {
+    "id": 6,
+    "name": "Toor Dal",
+    "description": "Split pigeon peas commonly used for dal, sambar, and other everyday Indian meals.",
+    "imageName": "Toordal.png",
+    "category": "Lentils",
+    "price": 5.99,
+    "discount": 0
+  },
+  {
+    "id": 7,
+    "name": "Chana Dal",
+    "description": "Split chickpeas used in dal, curries, snacks, and many traditional Indian recipes.",
+    "imageName": "Chanadal.png",
+    "category": "Lentils",
+    "price": 4.99,
+    "discount": 0
+  },
+  {
+    "id": 8,
+    "name": "Masoor Dal",
+    "description": "Red lentils that cook quickly and are commonly used for simple dal and soups.",
+    "imageName": "Masoordal.png",
+    "category": "Lentils",
+    "price": 4.49,
+    "discount": 0.15
+  },
+  {
+    "id": 9,
+    "name": "Rice",
+    "description": "Everyday rice suitable for curries, dal, pulao, and other Indian meals.",
+    "imageName": "BasmatiRice.png",
+    "category": "Grains",
+    "price": 12.99,
+    "discount": 0
+  },
+  {
+    "id": 10,
+    "name": "Poha",
+    "description": "Flattened rice commonly used to prepare poha, snacks, and light breakfast dishes.",
+    "imageName": "poha.png",
+    "category": "Grains",
+    "price": 3.99,
+    "discount": 0
+  }
+];
+
 
   res.send(products);
 });
